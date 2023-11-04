@@ -9,11 +9,11 @@ defmodule Game2048ImplGameTest do
     assert length(game.board) == 4
   end
 
-  test "new_game creates a game with a single tile" do
+  test "new_game creates a game with a single tile of 2" do
     game = Game.new_game(4)
     assert game.previous_move == nil
     assert game.game_state == :initializing
-    assert number_of_tiles_with_value(game.board, 1) == 1
+    assert number_of_tiles_with_value(game.board, 2) == 1
   end
 
   test "make_move has no effect when game is won or lost" do
@@ -77,7 +77,7 @@ defmodule Game2048ImplGameTest do
 
     assert status.previous_move == game.previous_move
     assert status.game_state == game.game_state
-    assert status.score == 1
+    assert status.score == 2
     assert status.board == game.board
   end
 

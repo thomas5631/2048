@@ -1,5 +1,6 @@
 defmodule Game2048.Impl.Game do
   @winning_value 2048
+  @starting_tile_value 2
   @new_tile_value 1
 
   alias Game2048.Type
@@ -24,7 +25,7 @@ defmodule Game2048.Impl.Game do
 
     initial_board =
       board
-      |> Board.maybe_place_new_tile(@new_tile_value)
+      |> Board.maybe_place_new_tile(@starting_tile_value)
 
     %__MODULE__{
       board: initial_board
