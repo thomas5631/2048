@@ -95,6 +95,14 @@ defmodule Game2048ImplBoardTest do
     |> Enum.each(&test_slide/1)
   end
 
+  test "slide combines tiles once in a single move" do
+    test_slide([
+      :left,
+      [[2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2]],
+      [[4, 4, 0, 0], [4, 4, 0, 0], [4, 4, 0, 0], [4, 4, 0, 0]]
+    ])
+  end
+
   test "calculate_score returns sum of all tiles" do
     board = [[2, 32], [8, 16]]
     assert Board.calculate_score(board) == 58
