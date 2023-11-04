@@ -2,7 +2,7 @@ defmodule B1Web.Live.Game do
   use B1Web, :live_view
 
   def mount(_params, _session, socket) do
-    game = Game2048.new_game(5)
+    game = Game2048.new_game(6)
     status = Game2048.status(game)
 
     socket = socket |> assign(%{game: game, status: status})
