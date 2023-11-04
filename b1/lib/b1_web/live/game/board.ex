@@ -31,9 +31,9 @@ defmodule B1Web.Live.Game.Board do
     <div class="flex flex-col">
       <%= for row <- @status.board do %>
         <div class="flex flex-row justify-center bg-gray-200">
-        <%= for tile <- row do %>
-          <div class={class_for_tile(tile)}><%= value_for_tile(tile) %></div>
-        <% end %>
+          <%= for tile <- row do %>
+            <div class={class_for_tile(tile)}><%= value_for_tile(tile) %></div>
+          <% end %>
         </div>
       <% end %>
     </div>
