@@ -11,7 +11,7 @@ The implementation makes the following behaviour choices:
  - supports swipe touch gestures
  - supports arrow key inputs
 
-The structure of this repository keeps the core game logic in the game_2048 application. This core logic is consumed and presented in a phoenix live view application named browser_client.
+The structure of this repository keeps the core game logic in the `game_2048` application. This core logic is consumed and presented in a phoenix live view application named `browser_client`.
 
 
 ## Prerequisites
