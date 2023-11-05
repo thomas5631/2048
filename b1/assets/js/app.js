@@ -21,9 +21,38 @@ import "phoenix_html"
 import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import topbar from "../vendor/topbar"
+// Add support for swiped events
+import "../vendor/swiped-events"
+
+let Hooks = {}
+Hooks.swipeable_hook = {
+  mounted() {
+    this.el.addEventListener("swiped-left", () => {
+      this.pushEvent("make_move", {key: "ArrowLeft"})
+    });
+    this.el.addEventListener("swiped-right", () => {
+      this.pushEvent("make_move", {key: "ArrowRight"})
+    });
+    this.el.addEventListener("swiped-up", () => {
+      this.pushEvent("make_move", {key: "ArrowUp"})
+    });
+    this.el.addEventListener("swiped-down", () => {
+      this.pushEvent("make_move", {key: "ArrowDown"})
+    });
+  },
+}
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
-let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}})
+let liveSocket = new LiveSocket(
+  "/live",
+  Socket,
+  {
+    params: {
+      _csrf_token: csrfToken,
+    },
+    hooks: Hooks
+  },
+)
 
 // Show progress bar on live navigation and form submits
 topbar.config({barColors: {0: "#29d"}, shadowColor: "rgba(0, 0, 0, .3)"})

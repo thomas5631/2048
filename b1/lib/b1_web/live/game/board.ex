@@ -18,7 +18,7 @@ defmodule B1Web.Live.Game.Board do
 
   defp class_for_tile(tile) do
     [
-      "w-12 h-12 flex justify-center items-center px-4 py-2 m-1 ",
+      "w-12 h-12 flex justify-center items-center px-4 py-2 m-1 rounded",
       @tile_classes[tile] || "text-gray-700 bg-gray-400"
     ]
   end
@@ -28,7 +28,7 @@ defmodule B1Web.Live.Game.Board do
 
   def render(assigns) do
     ~H"""
-    <div class="flex flex-col">
+    <div id="board" class="flex flex-col" phx-hook="swipeable_hook">
       <%= for row <- @status.board do %>
         <div class="flex flex-row justify-center bg-gray-200">
           <%= for tile <- row do %>

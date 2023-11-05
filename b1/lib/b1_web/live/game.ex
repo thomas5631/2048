@@ -30,8 +30,8 @@ defmodule B1Web.Live.Game do
     ~H"""
     <div phx-window-keyup="make_move">
       <.live_component module={__MODULE__.GameInfo} status={assigns.status} id="game_info" />
-      <.live_component module={__MODULE__.Board} status={assigns.status} id="board" />
-      <.live_component module={__MODULE__.Controls} status={assigns.status} id="controls" />
+      <.live_component module={__MODULE__.Board} status={assigns.status} id="game_board" />
+      <.live_component module={__MODULE__.Controls} status={assigns.status} id="game_controls" />
     </div>
     """
   end
