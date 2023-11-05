@@ -3,10 +3,9 @@ defmodule B1Web.Live.Game.GameInfo do
 
   def render(assigns) do
     ~H"""
-    <div class="flex flex-row justify-around">
-      <div>
-        Current score: <%= @status.score %>
-      </div>
+    <div class="flex flex-col items-center">
+      <h2 class="text-xl"><%= @status.score %></h2>
+      <h2 class="text-sm">Current score</h2>
     </div>
     """
   end

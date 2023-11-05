@@ -10,7 +10,7 @@ defmodule B1Web.Live.Game.Controls do
         phx-click="make_move"
         phx-value-key="ArrowLeft"
       >
-        <.icon name="hero-arrow-left-solid" />
+        <.icon name="hero-arrow-left-solid" /> Left
       </button>
       <button
         id="up-button"
@@ -18,7 +18,7 @@ defmodule B1Web.Live.Game.Controls do
         phx-click="make_move"
         phx-value-key="ArrowUp"
       >
-        <.icon name="hero-arrow-up-solid" />
+        <.icon name="hero-arrow-up-solid" /> Up
       </button>
       <button
         id="down-button"
@@ -26,7 +26,7 @@ defmodule B1Web.Live.Game.Controls do
         phx-click="make_move"
         phx-value-key="ArrowDown"
       >
-        <.icon name="hero-arrow-down-solid" />
+        <.icon name="hero-arrow-down-solid" /> Down
       </button>
       <button
         id="right-button"
@@ -34,7 +34,7 @@ defmodule B1Web.Live.Game.Controls do
         phx-click="make_move"
         phx-value-key="ArrowRight"
       >
-        <.icon name="hero-arrow-right-solid" />
+        <.icon name="hero-arrow-right-solid" /> Right
       </button>
     </div>
     """
