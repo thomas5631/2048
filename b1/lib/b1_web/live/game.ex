@@ -37,11 +37,11 @@ defmodule B1Web.Live.Game do
 
   def render(assigns) do
     ~H"""
-    <div>
+    <div id="game" phx-window-keyup="make_move">
       <%= if assigns.setup_required do %>
         <.live_component module={B1Web.Live.Game.NewGame} id="new_game" />
       <% else %>
-        <div phx-window-keyup="make_move" class="flex flex-col space-y-4 relative p-4">
+        <div class="flex flex-col space-y-4 relative p-4">
           <%= if assigns.status.game_state in [:won, :lost] do %>
             <div class="absolute flex flex-col justify-center items-center m-auto left-0 right-0 top-0 bottom-0 backdrop-blur-sm">
               <.live_component
