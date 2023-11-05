@@ -11,7 +11,7 @@ The implementation makes the following behaviour choices:
  - supports swipe touch gestures
  - supports arrow key inputs
 
-The structure of this repository keeps the core game logic in the game_2048 application. This core logic is consumed and presented in a phoenix live view application named b1.
+The structure of this repository keeps the core game logic in the game_2048 application. This core logic is consumed and presented in a phoenix live view application named browser_client.
 
 
 ## Prerequisites
@@ -22,14 +22,14 @@ This project requires:
 
 ## Installation
 ```bash
-cd b1
+cd browser_client
 mix setup
 ```
 
 ## Running locally
 
 ```bash
-cd b1
+cd browser_client
 mix phx.server
 ```
 
