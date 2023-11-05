@@ -28,7 +28,7 @@ defmodule B1Web.Live.Game.Board do
 
   def render(assigns) do
     ~H"""
-    <div id="board" class="overscroll-contain flex flex-col" phx-hook="swipeable_hook">
+    <div id="board" class="flex flex-col" phx-hook="swipeable_hook">
       <%= for row <- @status.board do %>
         <div class="flex flex-row justify-center bg-gray-200">
           <%= for tile <- row do %>
