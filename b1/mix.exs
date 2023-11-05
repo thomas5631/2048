@@ -45,7 +45,8 @@ defmodule B1.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:plug_cowboy, "~> 2.5"},
-      {:game_2048, path: "../game_2048"}
+      {:game_2048, path: "../game_2048"},
+      {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false}
     ]
   end
 
