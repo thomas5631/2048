@@ -35,7 +35,7 @@ RUN mix local.hex --force && \
 ENV MIX_ENV="prod"
 
 # install mix dependencies
-COPY b1/mix.exs b1/mix.lock ./
+COPY browser_client/mix.exs browser_client/mix.lock ./
 COPY game_2048 /game_2048
 
 RUN mix deps.get --only $MIX_ENV
@@ -44,14 +44,14 @@ RUN mkdir config
 # copy compile-time config files before we compile dependencies
 # to ensure any relevant config change will trigger the dependencies
 # to be re-compiled.
-COPY b1/config/config.exs b1/config/${MIX_ENV}.exs config/
+COPY browser_client/config/config.exs browser_client/config/${MIX_ENV}.exs config/
 RUN mix deps.compile
 
-COPY b1/priv priv
+COPY browser_client/priv priv
 
-COPY b1/lib lib
+COPY browser_client/lib lib
 
-COPY b1/assets assets
+COPY browser_client/assets assets
 
 # compile assets
 RUN mix assets.deploy
@@ -60,9 +60,9 @@ RUN mix assets.deploy
 RUN mix compile
 
 # Changes to config/runtime.exs don't require recompiling the code
-COPY b1/config/runtime.exs config/
+COPY browser_client/config/runtime.exs config/
 
-COPY b1/rel rel
+COPY browser_client/rel rel
 RUN mix release
 
 # start a new build stage so that the final image will only contain
@@ -87,7 +87,7 @@ RUN chown nobody /app
 ENV MIX_ENV="prod"
 
 # Only copy the final release from the build stage
-COPY --from=builder --chown=nobody:root /app/_build/${MIX_ENV}/rel/b1 ./
+COPY --from=builder --chown=nobody:root /app/_build/${MIX_ENV}/rel/browser_client ./
 
 USER nobody
 

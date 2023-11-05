@@ -20,7 +20,7 @@ jobs:
       matrix:
         otp: ['25.0.4']
         elixir: ['1.14.1']
-        application: ['game_2048', 'b1']
+        application: ['game_2048', 'browser_client']
 
     steps:
     - name: Set up Elixir
