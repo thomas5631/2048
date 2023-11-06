@@ -1,6 +1,7 @@
 defmodule BrowserClientWeb.LiveGameTest do
   use BrowserClientWeb.ConnCase, async: true
 
+  import Mock
   import Phoenix.ConnTest
   import Phoenix.LiveViewTest
   @endpoint BrowserClientWeb.Endpoint
@@ -65,6 +66,26 @@ defmodule BrowserClientWeb.LiveGameTest do
     assert view |> element("div", "1") |> has_element?()
   end
 
+  test "the win screen is displayed when the game is in the won state", %{conn: conn} do
+    conn = get(conn, "/")
+    {:ok, view, _html} = live(conn)
+
+    with_mock Game2048, won_game_mock() do
+      start_game(view)
+      assert view |> element("div", "You win!") |> has_element?()
+    end
+  end
+
+  test "the lose screen is displayed when the game is in the lost state", %{conn: conn} do
+    conn = get(conn, "/")
+    {:ok, view, _html} = live(conn)
+
+    with_mock Game2048, lost_game_mock() do
+      start_game(view)
+      assert view |> element("div", "You lose") |> has_element?()
+    end
+  end
+
   def start_game(view, size \\ 2) do
     size_as_string = Integer.to_string(size)
     view |> element("button", "#{size_as_string} x #{size_as_string}") |> render_click()
@@ -100,5 +121,23 @@ defmodule BrowserClientWeb.LiveGameTest do
     view
     |> element("#game")
     |> render_keyup(%{key: "ArrowRight"})
+  end
+
+  def won_game_mock() do
+    [
+      status: fn _game ->
+        %{game_state: :won, previous_move: :left, score: 2048, board: [[2048, 0], [0, 0]]}
+      end,
+      new_game: fn _size -> self() end
+    ]
+  end
+
+  def lost_game_mock() do
+    [
+      status: fn _game ->
+        %{game_state: :lost, previous_move: :left, score: 29, board: [[16, 1], [4, 8]]}
+      end,
+      new_game: fn _size -> self() end
+    ]
   end
 end
